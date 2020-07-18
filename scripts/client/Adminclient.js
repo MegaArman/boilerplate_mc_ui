@@ -82,11 +82,10 @@ system.entered = function (eventData) {
 
 system.onload = function (event) {
 	let serverplayer = event.data.data.player
-	// if (clientplayer.__unique_id__["64bit_low"] === serverplayer.__unique_id__["64bit_low"] && clientplayer.__unique_id__["64bit_high"] === serverplayer.__unique_id__["64bit_high"]) {
 		let ui = this.createEventData("minecraft:load_ui")
 		ui.data.path = "main.html"
 		this.broadcastEvent("minecraft:load_ui", ui)
-	// }
+
 }
 
 system.onUIMessage = function (eventdata) {
@@ -100,73 +99,21 @@ system.close = function () {
 	let event = this.createEventData("minecraft:unload_ui")
     event.data.path = "main.html"
 	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "time.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "weather.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "command.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "adminsmenu.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "shift.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "nbtshift.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "nbt.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-	event.data.path = "nbthelp.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "time.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "weather.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "command.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "adminsmenu.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "shift.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "nbtshift.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "nbt.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
+	// event.data.path = "nbthelp.html"
+	// this.broadcastEvent("minecraft:unload_ui", event)
 
-}
-
-system.day = function() {
-	let event = this.createEventData("AdminPanel:day")
-	this.broadcastEvent("AdminPanel:day", event)
-}
-
-system.night = function() {
-	let event = this.createEventData("AdminPanel:night")
-	this.broadcastEvent("AdminPanel:night", event)
-}
-
-system.midnight = function() {
-	let event = this.createEventData("AdminPanel:midnight")
-	this.broadcastEvent("AdminPanel:midnight", event)
-}
-
-system.clear = function() {
-	let event = this.createEventData("AdminPanel:clear")
-	this.broadcastEvent("AdminPanel:clear", event)
-}
-
-system.rain = function() {
-	let event = this.createEventData("AdminPanel:rain")
-	this.broadcastEvent("AdminPanel:rain", event)
-}
-
-system.thunder = function() {
-	let event = this.createEventData("AdminPanel:thunder")
-	this.broadcastEvent("AdminPanel:thunder", event)
-}
-
-system.noon = function() {
-	let event = this.createEventData("AdminPanel:noon")
-	this.broadcastEvent("AdminPanel:noon", event)
-}
-
-system.sunset = function() {
-	let event = this.createEventData("AdminPanel:sunset")
-	this.broadcastEvent("AdminPanel:sunset", event)
-}
-
-system.sunrise = function() {
-	let event = this.createEventData("AdminPanel:sunrise")
-	this.broadcastEvent("AdminPanel:sunrise", event)
-}
-
-system.back = function () {
-	this.close()
-	let event = this.createEventData("minecraft:load_ui")
-    event.data.path = "main.html"
-	this.broadcastEvent("minecraft:load_ui", event)
 }
