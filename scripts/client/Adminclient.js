@@ -9,6 +9,14 @@ let shiftdata
 
 
 system.initialize = function() {
+	const scriptLoggerConfig =
+		system.createEventData("minecraft:script_logger_config");
+	scriptLoggerConfig.data.log_errors = true;
+	scriptLoggerConfig.data.log_information = true;
+	scriptLoggerConfig.data.log_warnings = true;
+	system
+		.broadcastEvent("minecraft:script_logger_config", scriptLoggerConfig);
+
 	this.registerEventData("AdminPanel:command", {})
 	this.registerEventData("AdminPanel:nbt", {})
 	this.registerEventData("AdminPanel:openadminsmenu", {})
