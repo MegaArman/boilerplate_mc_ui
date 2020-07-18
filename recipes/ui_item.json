@@ -2,10 +2,10 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": {
-    "identifier": "adminpanel:adminpanel"
+    "identifier": "ui_item:ui_item"
     },
 
-    
+
     "tags": [ "crafting_table" ],
     "pattern": [
       "aaa",
@@ -18,7 +18,7 @@
       }
     },
     "result": {
-      "item": "adminpanel:adminpanel"
+      "item": "ui_item:ui_item"
     }
   }
 }
