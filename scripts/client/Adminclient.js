@@ -1,5 +1,6 @@
 const system = client.registerSystem(0,0);
-system.initialize = function() {
+system.initialize = function()
+{
 	const scriptLoggerConfig =
 		system.createEventData("minecraft:script_logger_config");
 	scriptLoggerConfig.data.log_errors = true;
@@ -8,16 +9,21 @@ system.initialize = function() {
 	system
 		.broadcastEvent("minecraft:script_logger_config", scriptLoggerConfig);
 
-	this.listenForEvent("AdminPanel:loadmenu", (event) => this.onmenu(event))
-	this.listenForEvent("AdminPanel:loadui", (event) => this.onload(event))
-	this.listenForEvent("minecraft:ui_event", (eventdata) => this.onUIMessage(eventdata))
-	this.listenForEvent("minecraft:client_entered_world", (eventData) => this.entered(eventData))
-}
+	this.listenForEvent("AdminPanel:loadmenu", (event) => this.onmenu(event));
+	this.listenForEvent("AdminPanel:loadui", (event) => this.onload(event));
+	this.listenForEvent("minecraft:ui_event",
+		(eventdata) => this.onUIMessage(eventdata));
+	this.listenForEvent("minecraft:client_entered_world",
+		(eventData) => this.entered(eventData));
+};
 
-system.update = function() {
-}
+system.update = function()
+{
 
-system.entered = function (eventData) {
+};
+
+system.entered = function (eventData)
+{
 	let loadEventData = this.createEventData("minecraft:load_ui");
 	loadEventData.data.path = "main.html";
 	// loadEventData.data.options.is_showing_menu = false;
@@ -32,24 +38,29 @@ system.entered = function (eventData) {
 	// let event = this.createEventData("AdminPanel:addplayer")
 	// event.data = clientplayer
 	// this.broadcastEvent("AdminPanel:addplayer", event)
-}
+};
 
-system.onload = function (event) {
-		let ui = this.createEventData("minecraft:load_ui")
-		ui.data.path = "main.html"
-		this.broadcastEvent("minecraft:load_ui", ui)
 
-}
 
-system.onUIMessage = function (eventdata) {
-	let eventData = eventdata.data
-  if(eventData === "closepressed") {
-    	this.close()
+system.onload = function (event)
+{
+		let ui = this.createEventData("minecraft:load_ui");
+		ui.data.path = "main.html";
+		this.broadcastEvent("minecraft:load_ui", ui);
+};
+
+system.onUIMessage = function (eventdata)
+{
+	let eventData = eventdata.data;
+  if(eventData === "closepressed")
+	{
+		this.close();
 	}
-}
+};
 
-system.close = function () {
-	let event = this.createEventData("minecraft:unload_ui")
-    event.data.path = "main.html"
-	this.broadcastEvent("minecraft:unload_ui", event)
-}
+system.close = function ()
+{
+	let event = this.createEventData("minecraft:unload_ui");
+  event.data.path = "main.html";
+	this.broadcastEvent("minecraft:unload_ui", event);
+};
