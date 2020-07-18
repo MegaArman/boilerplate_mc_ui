@@ -2,7 +2,7 @@
   "format_version": "1.12",
   "minecraft:recipe_shaped": {
     "description": {
-    "identifier": "ui_item:ui_item"
+    "identifier": "boilerplate:ui_item"
     },
 
 
@@ -18,7 +18,7 @@
       }
     },
     "result": {
-      "item": "ui_item:ui_item"
+      "item": "boilerplate:ui_item"
     }
   }
 }

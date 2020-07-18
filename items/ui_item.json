@@ -2,7 +2,7 @@
   "format_version": "1.10",
   "minecraft:item": {
     "description": {
-      "identifier": "ui_item:ui_item"
+      "identifier": "boilerplate:ui_item"
     },
 
     "components": {
