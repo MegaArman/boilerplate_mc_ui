@@ -1,8 +1,8 @@
 {
   "format_version": 1,
   "header": {
-    "name": "Admin Panel V4",
-    "description": "support 1.13 BP",
+    "name": "boilerplate ui",
+    "description": "a simple boilerplate ui",
     "uuid": "c72b66f7-b67a-4f1f-96e1-0f18c13d8782",
     "version": [
       4,
@@ -12,7 +12,7 @@
   },
   "modules": [
     {
-      "description": "Admin Panel by @Drag0nD3",
+      "description": "a simple boilerplate ui",
       "type": "client_data",
       "uuid": "0485c33c-eab0-43f5-9ed6-2350e7334129",
       "version": [
