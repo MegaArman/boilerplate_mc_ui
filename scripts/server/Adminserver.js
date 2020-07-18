@@ -3,8 +3,8 @@ let command = "minecraft:execute_command";
 
 system.initialize = function ()
 {
-	this.registerEventData("AdminPanel:loadui", {});
-	this.registerEventData("AdminPanel:loadmenu", {});
+	this.registerEventData("Main:loadui", {});
+	this.registerEventData("Main:loadmenu", {});
 	this
 	.listenForEvent("minecraft:block_interacted_with",
 		(eventData) => this.onUsed(eventData));
@@ -41,9 +41,9 @@ system.openEditor = function(result,eventData)
 		let stringresult = JSON.stringify(result);
 		if(!stringresult.includes("NOT") && !stringresult.includes("no"))
 		{
-			let event = system.createEventData("AdminPanel:loadui");
+			let event = system.createEventData("Main:loadui");
 			event.data=eventData;
-			system.broadcastEvent("AdminPanel:loadui", event);
+			system.broadcastEvent("Main:loadui", event);
 		}
 };
 

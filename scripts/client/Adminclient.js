@@ -9,8 +9,8 @@ system.initialize = function()
 	system
 		.broadcastEvent("minecraft:script_logger_config", scriptLoggerConfig);
 
-	this.listenForEvent("AdminPanel:loadmenu", (event) => this.onmenu(event));
-	this.listenForEvent("AdminPanel:loadui", (event) => this.onload(event));
+	this.listenForEvent("Main:loadmenu", (event) => this.onmenu(event));
+	this.listenForEvent("Main:loadui", (event) => this.onload(event));
 	this.listenForEvent("minecraft:ui_event",
 		(eventdata) => this.onUIMessage(eventdata));
 	this.listenForEvent("minecraft:client_entered_world",
@@ -34,9 +34,9 @@ system.entered = function (eventData)
 	system.broadcastEvent("minecraft:load_ui", loadEventData);
 
 	// clientplayer = eventData.data.player
-	// let event = this.createEventData("AdminPanel:addplayer")
+	// let event = this.createEventData("Main:addplayer")
 	// event.data = clientplayer
-	// this.broadcastEvent("AdminPanel:addplayer", event)
+	// this.broadcastEvent("Main:addplayer", event)
 };
 
 system.onload = function (event)
