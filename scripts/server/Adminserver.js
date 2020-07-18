@@ -28,23 +28,11 @@ system.onUsed = function(eventData)
 	{
 		if (item.item === "adminpanel:adminpanel")
 		{
-			let name = this.getComponent(player, "minecraft:nameable");
-			this.executeCommand(
-        `scoreboard players test @p[name=${name.data.name}] PanelAdmins 1 1`,
-				(result) => this.openEditor(result,eventData));
-		}
-   }
-};
-
-system.openEditor = function(result,eventData)
-{
-		let stringresult = JSON.stringify(result);
-		if(!stringresult.includes("NOT") && !stringresult.includes("no"))
-		{
 			let event = system.createEventData("Main:loadui");
 			event.data=eventData;
 			system.broadcastEvent("Main:loadui", event);
 		}
+   }
 };
 
 system.command = function(command)
