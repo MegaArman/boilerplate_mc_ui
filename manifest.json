@@ -3,7 +3,7 @@
   "header": {
     "name": "boilerplate ui",
     "description": "a simple boilerplate ui",
-    "uuid": "c72b66f7-b67a-4f1f-96e1-0f18c13d8782",
+    "uuid": "b1930c1b-dda1-433a-83f0-948670cd198b",
     "version": [
       4,
       0,
@@ -14,7 +14,7 @@
     {
       "description": "a simple boilerplate ui",
       "type": "client_data",
-      "uuid": "0485c33c-eab0-43f5-9ed6-2350e7334129",
+      "uuid": "5c985044-3578-4381-82b6-ffbea6941e3c",
       "version": [
         4,
         0,
@@ -24,7 +24,7 @@
   ],
   "dependencies": [
     {
-      "uuid": "5bafcda9-4b25-416d-81b7-af1b041b3034",
+      "uuid": "3ea9c0b0-23b8-43a7-b269-e21e6f88bf18",
       "version": [
         4,
         0,
