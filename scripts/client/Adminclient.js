@@ -19,7 +19,6 @@ system.initialize = function()
 
 system.update = function()
 {
-
 };
 
 system.entered = function (eventData)
@@ -39,8 +38,6 @@ system.entered = function (eventData)
 	// event.data = clientplayer
 	// this.broadcastEvent("AdminPanel:addplayer", event)
 };
-
-
 
 system.onload = function (event)
 {
