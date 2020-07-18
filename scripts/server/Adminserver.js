@@ -9,25 +9,9 @@ let data
 system.initialize = function () {
 	this.registerEventData("AdminPanel:loadui", {})
 	this.registerEventData("AdminPanel:loadmenu", {})
-	this.listenForEvent("AdminPanel:givepermission", (event) => this.givepermission(event))
-	this.listenForEvent("AdminPanel:openadminsmenu", (event) => this.openadminsmenu(event))
-	this.listenForEvent("AdminPanel:addplayer", (event) => this.addplayer(event))
-	this.listenForEvent("minecraft:block_interacted_with", (eventData) => this.onUsed(eventData))
-	this.command("scoreboard objectives add PanelAdmins dummy admins")
-	this.listenForEvent("AdminPanel:command", (event) => this.runcommand(event))
-	this.listenForEvent("AdminPanel:nbt", (event) => this.runnbtcommand(event))
-	this.listenForEvent("AdminPanel:day", () => this.command("time set day"))
-	this.listenForEvent("AdminPanel:night", () => this.command("time set night"))
-	this.listenForEvent("AdminPanel:midnight", () => this.command("time set midnight"))
-	this.listenForEvent("AdminPanel:clear", () => this.command("weather clear"))
-	this.listenForEvent("AdminPanel:rain", () => this.command("weather rain"))
-	this.listenForEvent("AdminPanel:thunder", () => this.command("weather thunder"))
-	this.listenForEvent("AdminPanel:noon", () => this.command("time set noon"))
-	this.listenForEvent("AdminPanel:sunset", () => this.command("time set sunset"))
-	this.listenForEvent("AdminPanel:sunrise", () => this.command("time set sunrise"))
-	
+	// this.listenForEvent("minecraft:block_interacted_with", (eventData) => this.onUsed(eventData))
 }
- 
+
 system.runcommand = function (event) {
 	let name = this.getComponent(event.data.clientplayer, "minecraft:nameable")
 	let eventdata = this.createEventData(command)
@@ -78,32 +62,9 @@ system.continue = function (entity) {
 			this.applyComponentChanges(entity, poscom);
 		}
 	}
-		
-		
-	
-}
 
-system.addplayer = function (event) {
-	players.push(event.data)
-	joined = this.getComponent(event.data, "minecraft:nameable").data.name
-	this.executeCommand("testfor @a[tag=PanelAdmins]", (feedback) => this.feedBack(feedback))
-}
 
-system.feedBack = function (feedback) {
-	let string = JSON.stringify(feedback)
-	if(string.includes("No target")) {
-		this.command(`tag @p[name=${joined}] add PanelAdmins`)
-		this.command(`scoreboard players set ${joined} PanelAdmins 1`)
-	}
-}
 
-system.openadminsmenu=function (event) {
-	let name=this.getComponent(event.data, "minecraft:nameable").data.name
-	this.executeCommand("testfor @p[name="+name+",tag=PanelAdmins]", (result) => this.result(result,event))
-}
-
-system.givepermission = function (event) {
-	this.command(`scoreboard players set ${event.data} PanelAdmins 1`)
 }
 
 system.onUsed = function(eventData) {
