@@ -57,6 +57,16 @@ system.update = function() {
 }
 
 system.entered = function (eventData) {
+	let loadEventData = this.createEventData("minecraft:load_ui");
+	loadEventData.data.path = "main.html";
+	// loadEventData.data.options.is_showing_menu = false;
+	// loadEventData.data.options.absorbs_input = true;
+	// loadEventData.data.options.always_accepts_input  = true;
+	// loadEventData.data.options.render_game_behind = false;
+	// loadEventData.data.options.should_steal_mouse = true;
+	// loadEventData.data.options.force_render_below = true;
+	system.broadcastEvent("minecraft:load_ui", loadEventData);
+
 	clientplayer = eventData.data.player
 	let event = this.createEventData("AdminPanel:addplayer")
 	event.data = clientplayer
@@ -67,7 +77,7 @@ system.onload = function (event) {
 	let serverplayer = event.data.data.player
 	if (clientplayer.__unique_id__["64bit_low"] === serverplayer.__unique_id__["64bit_low"] && clientplayer.__unique_id__["64bit_high"] === serverplayer.__unique_id__["64bit_high"]) {
 		let ui = this.createEventData("minecraft:load_ui")
-		ui.data.path = "admin.html"
+		ui.data.path = "main.html"
 		this.broadcastEvent("minecraft:load_ui", ui)
 	}
 }
@@ -84,10 +94,16 @@ system.onmenu = function (event) {
 }
 
 system.onUIMessage = function (eventdata) {
+
+		//--
 	let eventData = eventdata.data
 	if(!eventData) {
         return
 	}
+	// const chatEventData = clientSystem
+	// 		.createEventData("minecraft:display_chat_event");
+	// chatEventData.data.message = eventData.data;
+	// system.broadcastEvent("minecraft:display_chat_event", chatEventData);
 	if(eventData.includes("AdminPanel:givepermission")) {
     	let parseddata = JSON.parse(eventData)
         let eventdata = parseddata.data
@@ -155,7 +171,7 @@ system.onUIMessage = function (eventdata) {
     	this.broadcastEvent("minecraft:unload_ui", event)
 		event.data.path = "adminsmenu.html"
 		let ui = this.createEventData("minecraft:load_ui")
-       ui.data.path = "admin.html"
+       ui.data.path = "main.html"
        this.broadcastEvent("minecraft:load_ui", ui)
     }
 	else if(eventData.includes("adminsmenu")&&!eventData.includes("closeadminsmenu")) {
@@ -169,6 +185,7 @@ system.onUIMessage = function (eventdata) {
     else if(eventData === "closepressed") {
     	this.close()
 	}
+
 
     else if(eventData === "weatherpressed") {
     	this.weather()
@@ -228,7 +245,7 @@ system.onUIMessage = function (eventdata) {
 
 system.close = function () {
 	let event = this.createEventData("minecraft:unload_ui")
-    event.data.path = "admin.html"
+    event.data.path = "main.html"
 	this.broadcastEvent("minecraft:unload_ui", event)
 	event.data.path = "time.html"
 	this.broadcastEvent("minecraft:unload_ui", event)
@@ -318,6 +335,6 @@ system.command = function () {
 system.back = function () {
 	this.close()
 	let event = this.createEventData("minecraft:load_ui")
-    event.data.path = "admin.html"
+    event.data.path = "main.html"
 	this.broadcastEvent("minecraft:load_ui", event)
 }
