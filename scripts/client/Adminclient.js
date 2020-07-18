@@ -1,12 +1,4 @@
-const system = client.registerSystem(0,0)
-let command = "minecraft:execute_command"
-let clientplayer
-let sendUiData
-let time = 0
-let activate = 0
-let activate2=0
-let shiftdata
-
+const system = client.registerSystem(0,0);
 system.initialize = function() {
 	const scriptLoggerConfig =
 		system.createEventData("minecraft:script_logger_config");
@@ -16,20 +8,6 @@ system.initialize = function() {
 	system
 		.broadcastEvent("minecraft:script_logger_config", scriptLoggerConfig);
 
-	// this.registerEventData("AdminPanel:command", {})
-	// this.registerEventData("AdminPanel:nbt", {})
-	// this.registerEventData("AdminPanel:openadminsmenu", {})
-	// this.registerEventData("AdminPanel:addplayer", {})
-	// this.registerEventData("AdminPanel:givepermission", {})
-	// this.registerEventData("AdminPanel:day", {})
-	// this.registerEventData("AdminPanel:night", {})
-	// this.registerEventData("AdminPanel:midnight", {})
-	// this.registerEventData("AdminPanel:clear", {})
-	// this.registerEventData("AdminPanel:rain", {})
-	// this.registerEventData("AdminPanel:thunder", {})
-	// this.registerEventData("AdminPanel:noon", {})
-	// this.registerEventData("AdminPanel:sunset", {})
-	// this.registerEventData("AdminPanel:sunrise", {})
 	this.listenForEvent("AdminPanel:loadmenu", (event) => this.onmenu(event))
 	this.listenForEvent("AdminPanel:loadui", (event) => this.onload(event))
 	this.listenForEvent("minecraft:ui_event", (eventdata) => this.onUIMessage(eventdata))
@@ -37,30 +15,6 @@ system.initialize = function() {
 }
 
 system.update = function() {
-	// const chatEventData = system
-	// 		.createEventData("minecraft:display_chat_event");
-	// chatEventData.data.message = "hello";
-	// system
-	// 	.broadcastEvent("minecraft:display_chat_event", chatEventData);
-	if(activate == 1) {
-	   let eventdata = this.createEventData("minecraft:send_ui_event")
-	   eventdata.data.eventIdentifier = "showplayers"
-	   eventdata.data.data = JSON.stringify(sendUiData)
-	   this.broadcastEvent("minecraft:send_ui_event", eventdata)
-	   time++
-	}
-	if(activate2==1) {
-		let event = this.createEventData("minecraft:send_ui_event")
-        event.data.eventIdentifier = "shiftui"
-	   event.data.data = JSON.stringify(shiftdata)
-	   this.broadcastEvent("minecraft:send_ui_event", event)
-	   time++
-	}
-	if(time == 10) {
-		activate = 0
-		time = 0
-		activate2=0
-	}
 }
 
 system.entered = function (eventData) {
@@ -81,7 +35,6 @@ system.entered = function (eventData) {
 }
 
 system.onload = function (event) {
-	let serverplayer = event.data.data.player
 		let ui = this.createEventData("minecraft:load_ui")
 		ui.data.path = "main.html"
 		this.broadcastEvent("minecraft:load_ui", ui)
@@ -99,21 +52,4 @@ system.close = function () {
 	let event = this.createEventData("minecraft:unload_ui")
     event.data.path = "main.html"
 	this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "time.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "weather.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "command.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "adminsmenu.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "shift.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "nbtshift.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "nbt.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-	// event.data.path = "nbthelp.html"
-	// this.broadcastEvent("minecraft:unload_ui", event)
-
 }
